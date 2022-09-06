@@ -61,7 +61,6 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var metadata = data.metadata;
     
-
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
 
@@ -81,7 +80,7 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = 
+  /*  var yticks = 
 
     // 8. Create the trace for the bar chart. 
     var barData = [
@@ -94,4 +93,4 @@ function buildCharts(sample) {
     // 10. Use Plotly to plot the data with the layout. 
     
   });
-}
+}  *?
