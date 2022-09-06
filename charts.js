@@ -90,7 +90,7 @@ function buildCharts(sample) {
     var barLayout = {
      
     };
-    // 10. Use Plotly to plot the data with the layout. 
-    
+    // 10. Use Plotly to plot the data with the layout.   
+    */
   });
-}  *?
+}
