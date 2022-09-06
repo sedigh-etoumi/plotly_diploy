@@ -63,24 +63,15 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var metadata = data.metadata;
     var sample = data.sample;
-    
+  
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var resultList = sample.filter(sampleObj => sampleObj.id == sample);
-
+    
     //  5. Create a variable that holds the first sample in the array.
     var result = resultArray[0];
     var sampleResult = [];
-    
-    var PANEL = d3.select("#sample-metadata");
-    PANEL.html("");
-    firstPerson = data.metadata[0];
-    demographicInfo = Object.entries(result).forEach(([key, value]) => {
-      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
 
-    firstPersonsample = data.sample[0];
-      demographicInfosample = Object.entries(sampleResult).forEach(([key, value]) => {
-        PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
   
 
     
@@ -104,7 +95,7 @@ function buildCharts(sample) {
     var toptenArray = topTen.map(element => element.otu_ids);
     console.log(toptenArray);
    
-    
+
 
     /*
     var yticks = 
@@ -121,3 +112,4 @@ function buildCharts(sample) {
    
   });
 }
+
