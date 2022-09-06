@@ -5,6 +5,7 @@ function init() {
   // Use the list of sample names to populate the select options
   d3.json("samples.json").then((data) => {
     var sampleNames = data.names;
+    console.log(data);
 
     sampleNames.forEach((sample) => {
       selector
@@ -55,6 +56,7 @@ function buildMetadata(sample) {
 
 // 1. Create the buildCharts function.
 var demographicInfo = [];
+var sortedOtu = []
 function buildCharts(sample) {
   // 2. Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
@@ -66,21 +68,35 @@ function buildCharts(sample) {
 
     //  5. Create a variable that holds the first sample in the array.
     var result = resultArray[0];
-
-    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    PANEL.html("");
     var PANEL = d3.select("#sample-metadata");
     firstPerson = data.metadata[0];
-    demographicInfo = Object.entries(result);
+    demographicInfo =     Object.entries(result).forEach(([key, value]) => {
+      PANEL.append("h6").text(`${key.toUpperCase()}: ${value}`);
 
-    PANEL.html("");
-    
-    PANEL.append("h4").text(demographicInfo);
+
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+
+    sortedOtu = sample.sort((a,b) =>
+    a.otu_ids - b.otu_ids).reverse(); 
+
+
+
+    });
+    console.log(sortedOtu);
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-  /*  var yticks = 
+    var topTen = sortedOtu.slice(0,10);
+    var toptenArray = topTen.map(element => element.otu_ids);
+    console.log(toptenArray);
+   
+    
+
+    /*
+    var yticks = 
 
     // 8. Create the trace for the bar chart. 
     var barData = [
@@ -90,7 +106,7 @@ function buildCharts(sample) {
     var barLayout = {
      
     };
-    // 10. Use Plotly to plot the data with the layout.   
-    */
+    // 10. Use Plotly to plot the data with the layout.   */
+   
   });
 }
