@@ -81,7 +81,7 @@ function buildCharts(sample) {
 
     var otu_ids = sampleResult.otu_ids;
     var otu_labels = sampleResult.otu_labels;
-    var sampleValue =  sampleResult.sample_value
+    var sampleValues =  sampleResult.sample_values;
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
@@ -91,6 +91,7 @@ function buildCharts(sample) {
     var toptenArray = topTen.map(element => element.otu_ids);
     console.log(toptenArray);
    
+  
 
 
     /*
@@ -105,7 +106,9 @@ function buildCharts(sample) {
      
     };
     // 10. Use Plotly to plot the data with the layout.   */
-   
-  }
+});
+ 
+}
+
 
 
