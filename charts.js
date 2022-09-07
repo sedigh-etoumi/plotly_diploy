@@ -73,10 +73,6 @@ function buildCharts(sample) {
     var sampleResult = resultList[0];
 
   
-
-    
-
-
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
 
     var otu_ids = sampleResult.otu_ids;
@@ -87,28 +83,65 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var topTen = otu_ids.slice(0,10);
+    
+    toptenArraysorted = otu_ids.sort((a,b) =>
+    a.otu_ids - b.otu_ids.reverse());
+    
+    var topTen = otu_ids.slice(0,10 );
+    var toptenArray = topTen.map(element => element.otu_ids);
+    console.log(toptenArray);
+
+    toptenArraysamplevalues_sorted = sampleValues.sort((a,b) =>
+    a.sampleValues - b.sampleValues.reverse());
+     
+    var toptenarraySample = sampleValues.slice(0,10);
     var toptenArray = topTen.map(element => element.otu_ids);
     console.log(toptenArray);
    
-  
-
-
-    /*
-    var yticks = 
+    
+    var yticks = toptenArray
 
     // 8. Create the trace for the bar chart. 
-    var barData = [
+    var barData = {
+      x: toptenarraySample,
+      y: toptenArray,
+      type: "bar"
+
+    }
       
-    ];
+          
     // 9. Create the layout for the bar chart. 
     var barLayout = {
+      title: "Top 10 Bacteria Cultures Found",
+      xaxis: {title: "Sample Values"},
+      yaxis: {title: "OTU's"}
      
     };
-    // 10. Use Plotly to plot the data with the layout.   */
+    // 10. Use Plotly to plot the data with the layout.   
+
+    Plotly.newPlot("bar", barData, barLayout); 
+
 });
  
 }
 
+/*     var trace = {
+ x: ["nonalcoholic beer", "nonalcoholic wine", "nonalcoholic martini", "nonalcoholic margarita", "ice tea", "nonalcoholic rum & coke", "nonalcoholic mai tai", "nonalcoholic gin & tonic"],
+ y: [22.7, 17.1, 9.9, 8.7, 7.2, 6.1, 6.0, 4.6],
+ type: "bar"
+};
+var data = [trace];
+var layout = {
+ title: "'Bar' Chart",
+ xaxis: {title: "Drinks"},
+ yaxis: {title: "% of Drinks Ordered"}             
+};
+Plotly.newPlot("plotArea", data, layout);                                                                           
+
+
+      var sortedCities = cityGrowths.sort((a,b) =>
+    a.Increase_from_2016 - b.Increase_from_2016).reverse(); 
+
+*/
 
 
